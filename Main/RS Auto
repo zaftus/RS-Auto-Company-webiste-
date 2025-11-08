@@ -1,0 +1,139 @@
+import React from "react";
+import { motion } from "framer-motion";
+import { Car, Wrench, KeyRound } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+export default function RSAutoApp() {
+  return (
+    <div className="min-h-screen bg-gray-50 text-gray-900">
+      {/* Header */}
+      <header className="flex items-center justify-between px-8 py-4 bg-blue-900 text-white shadow-md">
+        <div className="flex items-center gap-3">
+          <RSLogo />
+          <h1 className="text-2xl font-bold tracking-wide">RS Auto</h1>
+        </div>
+        <nav className="flex gap-6">
+          <a href="#services" className="hover:text-blue-300">Services</a>
+          <a href="#lease" className="hover:text-blue-300">Lease & Rent</a>
+          <a href="#repairs" className="hover:text-blue-300">Repairs</a>
+          <a href="#contact" className="hover:text-blue-300">Contact</a>
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section className="flex flex-col items-center text-center py-24 bg-gradient-to-r from-blue-900 to-blue-600 text-white">
+        <motion.h2
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="text-5xl font-extrabold mb-4"
+        >
+          Drive with Confidence
+        </motion.h2>
+        <p className="max-w-2xl text-lg mb-8">
+          RS Auto provides trusted car leasing, rentals, and repair services — all under one roof.
+        </p>
+        <Button className="bg-white text-blue-900 font-semibold px-6 py-3 rounded-2xl shadow-lg hover:bg-gray-100">
+          Explore Our Fleet
+        </Button>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 px-10 bg-gray-100">
+        <h3 className="text-3xl font-bold text-center mb-12">Our Services</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <ServiceCard icon={<KeyRound />} title="Car Leasing & Rentals" description="Affordable plans and flexible rental options for individuals and businesses." />
+          <ServiceCard icon={<Wrench />} title="Auto Repairs" description="Expert repair and maintenance services to keep your vehicle running smoothly." />
+          <ServiceCard icon={<Car />} title="Fleet Management" description="Streamlined fleet services for corporate clients to optimize performance and cost." />
+        </div>
+      </section>
+
+      {/* Leasing Section */}
+      <section id="lease" className="py-20 px-10 bg-white">
+        <h3 className="text-3xl font-bold text-center mb-12">Lease or Rent a Vehicle</h3>
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="mb-6 text-lg">
+            Choose from a range of luxury, economy, and utility vehicles. Short-term or long-term — RS Auto offers the right deal for you.
+          </p>
+          <Button className="bg-blue-900 text-white px-8 py-3 rounded-xl shadow hover:bg-blue-800">
+            View Available Cars
+          </Button>
+        </div>
+      </section>
+
+      {/* Repairs Section */}
+      <section id="repairs" className="py-20 px-10 bg-gray-50">
+        <h3 className="text-3xl font-bold text-center mb-12">Professional Auto Repairs</h3>
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="mb-6 text-lg">
+            From oil changes to engine diagnostics, RS Auto’s certified technicians handle all makes and models with precision and care.
+          </p>
+          <Button className="bg-blue-900 text-white px-8 py-3 rounded-xl shadow hover:bg-blue-800">
+            Schedule a Service
+          </Button>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-10 bg-blue-900 text-white">
+        <h3 className="text-3xl font-bold text-center mb-12">Contact Us</h3>
+        <form className="max-w-2xl mx-auto grid gap-6">
+          <input className="p-3 rounded-lg text-gray-900" placeholder="Name" required />
+          <input className="p-3 rounded-lg text-gray-900" placeholder="Email" required type="email" />
+          <textarea className="p-3 rounded-lg text-gray-900" placeholder="Message" rows="4" required></textarea>
+          <Button className="bg-white text-blue-900 font-semibold px-8 py-3 rounded-2xl shadow-lg hover:bg-gray-100">
+            Send Message
+          </Button>
+        </form>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-6 text-center bg-gray-800 text-gray-300">
+        <p>© {new Date().getFullYear()} RS Auto. All rights reserved.</p>
+      </footer>
+    </div>
+  );
+}
+
+function ServiceCard({ icon, title, description }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="bg-white shadow-md rounded-2xl p-8 text-center hover:shadow-lg"
+    >
+      <div className="flex justify-center mb-4 text-blue-900 text-4xl">{icon}</div>
+      <h4 className="text-xl font-semibold mb-2">{title}</h4>
+      <p className="text-gray-600">{description}</p>
+    </motion.div>
+  );
+}
+
+// SVG Logo Component
+function RSLogo() {
+  return (
+    <svg
+      width="48"
+      height="48"
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="rounded-full bg-white p-1"
+    >
+      <circle cx="50" cy="50" r="48" stroke="#1E3A8A" strokeWidth="4" fill="#2563EB" />
+      <text
+        x="50%"
+        y="55%"
+        textAnchor="middle"
+        fontSize="32"
+        fontWeight="bold"
+        fill="white"
+        fontFamily="Arial, sans-serif"
+      >
+        RS
+      </text>
+      <path d="M20 75 Q50 40 80 75" stroke="white" strokeWidth="5" fill="none" />
+    </svg>
+  );
+}
